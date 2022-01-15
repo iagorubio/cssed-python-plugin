@@ -1,0 +1,10 @@
+2004-09-13  Michèle Garoche <michele.garoche@easyconnect.fr>
+
+	* configure.in: 
+	
+	Added fr to ALL_LINGUAS
+	
+	* NEWS:
+	
+	Given it contents
+

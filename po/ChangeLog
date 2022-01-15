@@ -1,0 +1,25 @@
+2005-09-18  iagorubio  <iagorubio@users.sourceforge.net>
+
+	* ChangeLog: Deleting bogus files from other project.
+
+2005-09-17  iagorubio  <iagorubio@users.sourceforge.net>
+
+	* POTFILES.in, es.po, fr.po: Updated language files.
+
+	* es.gmo, fr.gmo: Deleting bogus files from other project.
+
+	* cssed-pythonscript-plugin.pot: Addind this module's language file.
+
+	* cssed-quicksearch-plugin.pot:
+	Deleting bogus files from other project.
+
+	* Makefile.in.in, POTFILES.in, cssed-quicksearch-plugin.pot, es.gmo, es.po, fr.gmo, fr.po, update_potfiles_in:
+	New file.
+
+	* Makefile.in.in, POTFILES.in, cssed-quicksearch-plugin.pot, es.gmo, es.po, fr.gmo, fr.po, update_potfiles_in:
+	initial import into CVS
+
+	* ChangeLog: New file.
+
+	* ChangeLog: initial import into CVS
+

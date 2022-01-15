@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-05-31 19:45+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/cssed-pyobject.c:1828 src/cssed-pyobject.c:1835
+#: src/cssed-pyobject.c:1850
+msgid "Unable to execute script"
+msgstr ""
+
+#: src/cssed-pyobject.c:1828 src/cssed-pyobject.c:1835
+#: src/cssed-pyobject.c:1850
+msgid "Error executing script. Check your syntax."
+msgstr ""
+
+#. load the cssed module
+#: src/cssed-pyobject.c:1886
+msgid ""
+"this module provides access to cssed's plugable interface through python"
+msgstr ""
+
+#: src/cssed-pyobject.c:1898
+msgid "Unable to execute init script"
+msgstr ""
+
+#: src/cssed-pyobject.c:1898
+#, c-format
+msgid ""
+"Error executing init script.\n"
+"%s."
+msgstr ""
+
+#: src/pythonscript.c:71
+msgid "Python script"
+msgstr ""
+
+#: src/pythonscript.c:72
+msgid "Adds a python scripting interface to cssed"
+msgstr ""
+
+#: src/pythonscript.c:159
+msgid "Cannot execute script"
+msgstr ""
+
+#: src/pythonscript.c:159
+#, c-format
+msgid ""
+"Script does not exists\n"
+"\n"
+"%s"
+msgstr ""
+
+#: src/pythonscript.c:343
+msgid "Select python script to execute"
+msgstr ""
+
+#: src/pythonscript.c:429 src/pythonscript.c:432
+msgid "Python scripts"
+msgstr ""
+
+#: src/pythonscript.c:444 src/pythonscript.c:448
+msgid "User scripts"
+msgstr ""
+
+#: src/pythonscript.c:460 src/pythonscript.c:464
+msgid "System scripts"
+msgstr ""
+
+#: src/pythonscript.c:476
+msgid "Run file"
+msgstr ""
+
+#: src/pythonscript.c:484
+msgid "Run current document"
+msgstr ""
+
+#: src/pythonscript.c:497
+msgid "Re-read script directories"
+msgstr ""

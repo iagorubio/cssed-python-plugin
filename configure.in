@@ -1,0 +1,111 @@
+dnl Process this file with autoconf to produce a configure script.
+
+AC_INIT(configure.in)
+AM_INIT_AUTOMAKE(cssed-python-plugin, 0.2)
+AM_CONFIG_HEADER(config.h)
+
+AC_ISC_POSIX
+AC_PROG_CC
+AM_PROG_CC_STDC
+AC_HEADER_STDC
+
+AC_CANONICAL_HOST
+
+dnl ************************
+dnl Checks for OS type
+dnl ************************
+case "${host}" in
+i[[3456]]86-*-linux-gnu*) 
+	OSTYPE="LINUX"
+	 ;;
+powerpc-apple-darwin*)
+	OSTYPE="DARWIN"
+	;; 
+esac
+
+AM_CONDITIONAL(ISDARWIN, test "$OSTYPE" = DARWIN)
+
+AC_MSG_CHECKING( if prefix is set )
+if test "${prefix}" = "NONE"; then
+	echo "no, setting default prefix /usr"
+	prefix="/usr";
+fi
+
+dnl We need to know the installed cssed's prefix to install the plugin
+cssedincludedir=`echo ${prefix}/include/cssed`
+AC_MSG_CHECKING( if cssed headers are installed in $cssedincludedir )
+if test -e $cssedincludedir/plugin.h; then
+ 	echo "yes"
+else
+ 	echo "no"
+ 	AC_MSG_ERROR( headers are not in $cssedincludedir/ please use the same prefix you used when cssed was installed )
+fi
+
+
+pkg_modules="cssed >= 0.4.0 gtk+-2.0 >= 2.0.0 glib-2.0 >= 2.0 gmodule-2.0 >= 2.0"
+PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+AC_SUBST(PACKAGE_CFLAGS)
+AC_SUBST(PACKAGE_LIBS)
+
+AC_PATH_PROG(pythonbin, python)
+if test "x$pythonbin" = "x" ; then
+		AC_PATH_PROG(pythonbin, python2)
+fi
+
+if test "x$pythonbin" = "x"; then
+		python=no
+else
+		AC_MSG_CHECKING(python version)
+		changequote(<<, >>)dnl
+		PYVER=`$pythonbin -c 'import distutils.sysconfig; print distutils.sysconfig.get_config_vars("VERSION")[0];'`
+		PYLIB=`$pythonbin -c 'import distutils.sysconfig; print distutils.sysconfig.get_python_lib(standard_lib=1);'`
+		PYINC=`$pythonbin -c 'import distutils.sysconfig; print distutils.sysconfig.get_config_vars("INCLUDEPY")[0];'`
+		$pythonbin -c "import sys; map(int,sys.version[:3].split('.'))>= [2,2] or sys.exit(1)"
+		changequote([, ])dnl
+		AC_MSG_RESULT($PYVER)
+		if test "$?" != "1"; then
+				AC_MSG_CHECKING(python compiler flags)
+				if test -f $PYINC/Python.h; then
+						PACKAGE_LIBS="$PACKAGE_LIBS -L$PYLIB/config -lpython$PYVER -lpthread -lutil"
+						PACKAGE_CFLAGS="$PACKAGE_CFLAGS -I$PYINC"
+						AC_MSG_RESULT()
+				else
+						python=no
+						AC_MSG_RESULT([Can't find Python.h])
+				fi
+		else
+				echo "python's version is too old. Version 2.2 or greater required."
+				python=no
+		fi
+fi
+
+if test "x$python" = "xno"; then
+	AC_MSG_ERROR([Error on python configuration])
+fi
+
+AC_ARG_WITH(init-script,
+	[  --with-init-script   to search for an initial script on load, to set up the environment],
+	[init_script=$withval],
+	[init_script=no])
+
+if test "x$init_script" = "xyes"; then
+	PACKAGE_CFLAGS="-DWITH_INIT_SCRIPT $PACKAGE_CFLAGS"
+fi
+
+
+GETTEXT_PACKAGE=cssed-python-plugin
+AC_SUBST(GETTEXT_PACKAGE)
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
+
+dnl Add the languages which your application supports here.
+ALL_LINGUAS="es fr"
+AM_GLIB_GNU_GETTEXT
+
+AC_OUTPUT([
+Makefile
+src/Makefile
+po/Makefile.in
+])
+
+
+

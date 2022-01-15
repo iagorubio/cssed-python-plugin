@@ -1,0 +1,10 @@
+cssed python plugin
+------------------------
+
+This plugin provides python bindings for
+cssed's plugable interface.
+
+Read the COPYING file to know license and
+distribution terms.
+
+cssed python  plugin (c) Iago Rubio, 2005

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ls ../src/*h ../src/*c | sed -e s/^\.\.\\/// > POTFILES.in

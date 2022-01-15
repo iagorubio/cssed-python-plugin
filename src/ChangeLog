@@ -1,0 +1,12 @@
+2004-09-13  Michèle Garoche <michele.garoche@easyconnect.fr>
+
+	* src/quicksearch.c: 
+	
+	Added check of null string in search field
+	Improved English wording in GUI
+	Changed name of plugin in calls
+
+	* ChangeLog: 
+	
+	Added it to track changes
+

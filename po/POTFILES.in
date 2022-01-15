@@ -1,0 +1,4 @@
+src/cssed-pyobject.c
+src/cssed-pyobject.h
+src/pythonscript.c
+src/pythonscript.h
